@@ -1,0 +1,47 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(var(--gradient-angle), blue, purple, red, orange);
+  animation: rotation 5s linear infinite;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0.3rem;
+  filter: blur(0.3rem);
+  background-color: rgb(245, 245, 247);
+}
+
+img {
+  z-index: 2;
+  width: 40%;
+}
